@@ -24,38 +24,37 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                TextFormField(
-                  key: const Key('email_field'),
-                  controller: _emailController,
-                  validator: emailValidator,
-                  decoration: const InputDecoration(labelText: 'Email'),
-                ),
-                TextFormField(
-                  key: const Key('password_field'),
-                  controller: _passwordController,
-                  validator: passwordValidator,
-                  decoration: const InputDecoration(labelText: 'Password'),
-                ),
-                ElevatedButton(
-                  key: const Key('submit_button'),
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      // for now, just print
-                      print('Form is valid');
-                    }
-                  },
-                  child: const Text('Submit'),
-                ),
-              ],
-            ),
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                key: const Key('email_field'),
+                controller: _emailController,
+                validator: emailValidator,
+                decoration: const InputDecoration(labelText: 'Email'),
+              ),
+              TextFormField(
+                key: const Key('password_field'),
+                controller: _passwordController,
+                validator: passwordValidator,
+                decoration: const InputDecoration(labelText: 'Password'),
+              ),
+              ElevatedButton(
+                key: const Key('submit_button'),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(const SnackBar(content: Text("ok")));
+                  }
+                },
+                child: const Text('Submit'),
+              ),
+            ],
           ),
         ),
       ),

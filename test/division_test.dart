@@ -26,4 +26,12 @@ void main() {
     // act + assert
     expect(() => divide(a, b), throwsA(isA<ArgumentError>()));
   });
+
+  test('show throw an error when divide over 0', () {
+    // arrange
+    final a = 10;
+    final b = 0;
+    // assert
+    expect(() => divide(a, b), throwsA(isA<ArgumentError>()));
+  });
 }

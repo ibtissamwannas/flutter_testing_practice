@@ -37,7 +37,9 @@ void main() {
     WidgetTester tester,
   ) async {
     // arrange
-    await tester.pumpWidget(const LoginForm());
+    await tester.pumpWidget(
+      const MaterialApp(home: Scaffold(body: LoginForm())),
+    );
 
     // act
     await tester.enterText(
@@ -50,6 +52,7 @@ void main() {
 
     // assert
     expect(find.text('Email is required'), findsNothing);
+    expect(find.text('ok'), findsOneWidget);
     expect(find.text('Password too short'), findsNothing);
   });
 }

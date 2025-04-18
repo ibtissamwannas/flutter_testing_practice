@@ -7,7 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:flutter_testing_app/main.dart';
 
 void main() {
@@ -26,5 +25,22 @@ void main() {
     // Verify that our counter has incremented.
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
+  });
+
+  testWidgets('couter increment test', (WidgetTester tester) async {
+    // arrange
+    await tester.pumpWidget(const Counter());
+    
+    // assert
+    expect(find.text('Count: 0'), findsOneWidget);
+    expect(find.text('Count: 1'), findsNothing);
+
+    // act
+    await tester.tap(find.byKey(Key('increment_button')));
+    await tester.pump();
+
+    // assert
+    expect(find.text('Count: 1'), findsOneWidget);
+    expect(find.text('Count: 0'), findsNothing);
   });
 }
