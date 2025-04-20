@@ -21,3 +21,8 @@ void main() {
     expect(find.text('ok'), findsOneWidget);
   });
 }
+
+
+// Method	Use When...
+// pump()	You just want to trigger a rebuild once
+// pumpAndSettle()	You want to wait for animations or SnackBars
